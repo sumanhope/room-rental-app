@@ -6,6 +6,7 @@ import 'package:roomrentalapp/pages/favorite.dart';
 import 'package:roomrentalapp/pages/home.dart';
 import 'package:roomrentalapp/pages/profile.dart';
 import 'package:roomrentalapp/pages/rooms.dart';
+import 'package:roomrentalapp/themes/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,15 +56,15 @@ class _LandingPageState extends State<LandingPage> {
       child: Scaffold(
         body: pages[currentStep],
         bottomNavigationBar: Container(
-          color: Colors.black,
+          color: AppColor.secondaryColor,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 11),
             child: GNav(
               hoverColor: Colors.white10,
-              backgroundColor: Colors.black,
-              color: Colors.grey,
+              backgroundColor: AppColor.secondaryColor,
+              color: const Color.fromARGB(218, 224, 224, 224),
               activeColor: Colors.white,
-              tabBackgroundColor: const Color.fromARGB(255, 54, 53, 53),
+              tabBackgroundColor: AppColor.accentColor,
               gap: 6,
               padding: const EdgeInsets.all(10),
               iconSize: 25,
