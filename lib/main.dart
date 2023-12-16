@@ -79,8 +79,8 @@ class _LandingPageState extends State<LandingPage> {
                   text: "Welcome",
                 ),
                 GButton(
-                  icon: FontAwesome.person_shelter,
-                  text: "Search",
+                  icon: EvaIcons.search_outline,
+                  text: "Rooms",
                 ),
                 GButton(
                   icon: EvaIcons.heart,
