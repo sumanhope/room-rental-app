@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/user/login.dart';
 
 class LoginContainer extends StatelessWidget {
   const LoginContainer({
@@ -49,12 +50,12 @@ class LoginContainer extends StatelessWidget {
               height: size.height * 0.06,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.pushReplacement(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const LoginPage(),
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColor.accentColor,
