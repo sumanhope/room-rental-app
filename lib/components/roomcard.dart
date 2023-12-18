@@ -25,31 +25,33 @@ class RoomCard extends StatelessWidget {
         child: Container(
           width: size.width,
           decoration: BoxDecoration(
-              color: AppColor.primaryColor,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color.fromARGB(206, 50, 50, 50),
-                  blurRadius: 3,
-                  offset: Offset(1, 5), // Shadow position
-                ),
-              ]),
+            color: AppColor.primaryColor,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(206, 50, 50, 50),
+                blurRadius: 3,
+                offset: Offset(1, 5), // Shadow position
+              ),
+            ],
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 width: size.width,
-                height: size.height * 0.3,
-                decoration: BoxDecoration(
-                  color: AppColor.accentColor,
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)),
-                  image: DecorationImage(
-                    image: AssetImage(imagelink),
-                    fit: BoxFit.contain,
-                  ),
+                height: size.height * 0.28,
+                child: Image(
+                  image: AssetImage(imagelink),
+                  fit: BoxFit.cover,
                 ),
+                // decoration: BoxDecoration(
+                //   color: AppColor.accentColor,
+                // image: DecorationImage(
+                //   image: AssetImage(imagelink),
+                //   fit: BoxFit.cover,
+                // ),
+                //),
               ),
               Padding(
                 padding: const EdgeInsets.only(
