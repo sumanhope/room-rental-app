@@ -88,7 +88,7 @@ class _LandingPageState extends State<LandingPage> {
                 ),
                 GButton(
                   icon: EvaIcons.person,
-                  text: "Me",
+                  text: "Profile",
                 ),
               ],
               selectedIndex: currentStep,
