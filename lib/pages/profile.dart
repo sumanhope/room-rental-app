@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:roomrentalapp/components/logincontainer.dart';
 import 'package:roomrentalapp/components/profilebutton.dart';
+import 'package:roomrentalapp/pages/aboutus.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 
@@ -98,7 +99,12 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               ProfileButton(
                 size: size,
-                func: () {},
+                func: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const AboutUsPage();
+                  }));
+                },
                 leading: EvaIcons.activity_outline,
                 title: "About",
               ),
