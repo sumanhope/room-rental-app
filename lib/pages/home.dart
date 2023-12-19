@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: AppColor.backgroundColor,
       appBar: AppBar(
         backgroundColor: AppColor.appbarColor,
+        automaticallyImplyLeading: false,
         title: const Text(
           "Welcome",
           style: TextStyle(

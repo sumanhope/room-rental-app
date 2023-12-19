@@ -16,6 +16,7 @@ class _RoomPageState extends State<RoomPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.appbarColor,
+        automaticallyImplyLeading: false,
         title: const Text(
           "Rooms",
           style: TextStyle(
