@@ -34,7 +34,7 @@ class LoginContainer extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(bottom: 15.0, left: 15, right: 15),
               child: Text(
-                "Log in to add place, leave review, give rating and access bookmarks.",
+                "Log in to add room, check room details, as well as to access favorites.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
