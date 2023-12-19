@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 import 'package:roomrentalapp/user/login.dart';
 
 class LoginContainer extends StatelessWidget {
@@ -36,13 +37,7 @@ class LoginContainer extends StatelessWidget {
               child: Text(
                 "Log in to add room, check room details, as well as to access favorites.",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontStyle: FontStyle.normal,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1,
-                ),
+                style: AppText.blacksmallText,
               ),
             ),
             SizedBox(
@@ -65,13 +60,7 @@ class LoginContainer extends StatelessWidget {
                 ),
                 child: const Text(
                   "Login",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1,
-                  ),
+                  style: AppText.whitenormalbuttonText,
                 ),
               ),
             ),

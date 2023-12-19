@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -21,7 +22,7 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: func,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.appbarColor,
+          backgroundColor: AppColor.primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -32,11 +33,7 @@ class CustomButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppText.whitenormalbuttonText,
         ),
       ),
     );

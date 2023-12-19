@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/components/roomcard.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 
 class RoomPage extends StatefulWidget {
   const RoomPage({super.key});
@@ -15,16 +16,11 @@ class _RoomPageState extends State<RoomPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColor.appbarColor,
+        backgroundColor: AppColor.primaryColor,
         automaticallyImplyLeading: false,
         title: const Text(
           "Rooms",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 1,
-          ),
+          style: AppText.appbarText,
         ),
         centerTitle: true,
       ),

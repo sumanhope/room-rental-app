@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -25,14 +26,10 @@ class CustomTextField extends StatelessWidget {
           borderSide: BorderSide(color: AppColor.accentColor, width: 3),
         ),
         labelText: title,
-        labelStyle: const TextStyle(
-          color: AppColor.appbarColor,
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-        ),
+        labelStyle: AppText.labelText,
         prefixIcon: Icon(
           leading,
-          color: AppColor.appbarColor,
+          color: AppColor.primaryColor,
           size: 30,
         ),
         suffixIcon: controller.text.isEmpty
@@ -40,7 +37,7 @@ class CustomTextField extends StatelessWidget {
             : IconButton(
                 icon: const Icon(
                   Icons.close,
-                  color: AppColor.appbarColor,
+                  color: AppColor.primaryColor,
                 ),
                 onPressed: () => controller.clear(),
               ),
@@ -49,10 +46,7 @@ class CustomTextField extends StatelessWidget {
           borderSide: BorderSide(color: AppColor.accentColor, width: 3),
         ),
       ),
-      style: const TextStyle(
-        color: AppColor.appbarColor,
-        fontSize: 15,
-      ),
+      style: AppText.textfieldText,
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
       cursorColor: AppColor.accentColor,

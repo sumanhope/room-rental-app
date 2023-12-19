@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -13,16 +14,11 @@ class _FavoritePageState extends State<FavoritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColor.appbarColor,
+        backgroundColor: AppColor.primaryColor,
         automaticallyImplyLeading: false,
         title: const Text(
           "Favorite",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 1,
-          ),
+          style: AppText.appbarText,
         ),
         centerTitle: true,
       ),
@@ -31,7 +27,10 @@ class _FavoritePageState extends State<FavoritePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Text("Favorite"),
+              child: Text(
+                "Favorite",
+                style: AppText.blacknormalText,
+              ),
             ),
           ],
         ),

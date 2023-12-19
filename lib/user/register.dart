@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -46,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: ClipPath(
                     clipper: OvalBottomBorderClipper(),
                     child: Container(
-                      color: AppColor.appbarColor,
+                      color: AppColor.primaryColor,
                       height: size.height * 0.20,
                     ),
                   ),
@@ -54,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ClipPath(
                   clipper: OvalBottomBorderClipper(),
                   child: Container(
-                    color: AppColor.appbarColor,
+                    color: AppColor.primaryColor,
                     height: size.height * 0.18,
                   ),
                 ),
@@ -65,12 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             const Text(
               "Create Account",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.5,
-                color: AppColor.appbarColor,
-              ),
+              style: AppText.orangeXLText,
             ),
             Expanded(
               child: Stepper(
@@ -78,8 +74,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 physics: const ScrollPhysics(),
                 steps: getSteps(),
                 currentStep: currentStep,
-                connectorColor:
-                    const MaterialStatePropertyAll(AppColor.appbarColor),
+                connectorColor: const MaterialStatePropertyAll(
+                  AppColor.primaryColor,
+                ),
                 onStepContinue: () {
                   final isLastStep = currentStep == getSteps().length - 1;
                   if (isLastStep) {
@@ -112,10 +109,37 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         if (currentStep != 0)
                           Expanded(
+                            child: SizedBox(
+                              height: 50,
+                              child: ElevatedButton(
+                                onPressed: details.onStepCancel,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColor.primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  side: const BorderSide(
+                                    width: 3,
+                                    color: Color.fromARGB(88, 0, 0, 0),
+                                  ),
+                                ),
+                                child: const Text(
+                                  'Back',
+                                  style: AppText.whitenormalbuttonText,
+                                ),
+                              ),
+                            ),
+                          ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            height: 50,
                             child: ElevatedButton(
-                              onPressed: details.onStepCancel,
+                              onPressed: details.onStepContinue,
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColor.appbarColor,
+                                backgroundColor: AppColor.primaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
@@ -125,30 +149,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                               ),
                               child: const Text(
-                                'Back',
-                                style: TextStyle(color: Colors.white),
+                                'Next',
+                                style: AppText.whitenormalbuttonText,
                               ),
-                            ),
-                          ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: details.onStepContinue,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColor.appbarColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              side: const BorderSide(
-                                width: 3,
-                                color: Color.fromARGB(88, 0, 0, 0),
-                              ),
-                            ),
-                            child: const Text(
-                              'Next',
-                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
@@ -169,7 +172,10 @@ class _RegisterPageState extends State<RegisterPage> {
       Step(
         state: currentStep > 0 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 0,
-        title: const Text("Personal"),
+        title: const Text(
+          "Personal",
+          style: AppText.blacksmallText,
+        ),
         content: Column(
           children: [
             CustomFormField(
@@ -202,7 +208,10 @@ class _RegisterPageState extends State<RegisterPage> {
       Step(
         state: currentStep > 1 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 1,
-        title: const Text("Account"),
+        title: const Text(
+          "Account",
+          style: AppText.blacksmallText,
+        ),
         content: Column(
           children: [
             CustomFormField(
@@ -234,8 +243,9 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       Step(
         isActive: currentStep >= 2,
-        title: Text(
+        title: const Text(
           "Confirm",
+          style: AppText.blacksmallText,
         ),
         content: Text(
           'Full name : ${fullnameController.text}\nPlace : ${placeController.text}\nEmail : ${emailController.text}\nUsername : ${usernameController.text}\nPassword : ${passwordController.text}\nConfirmPassword : ${confrimpasswordController.text}',
@@ -271,14 +281,10 @@ class CustomFormField extends StatelessWidget {
           borderSide: BorderSide(color: AppColor.accentColor, width: 3),
         ),
         labelText: title,
-        labelStyle: const TextStyle(
-          color: AppColor.appbarColor,
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-        ),
+        labelStyle: AppText.labelText,
         prefixIcon: Icon(
           leading,
-          color: AppColor.appbarColor,
+          color: AppColor.primaryColor,
           size: 30,
         ),
         suffixIcon: controller.text.isEmpty
@@ -286,7 +292,7 @@ class CustomFormField extends StatelessWidget {
             : IconButton(
                 icon: const Icon(
                   Icons.close,
-                  color: AppColor.appbarColor,
+                  color: AppColor.primaryColor,
                 ),
                 onPressed: () => controller.clear(),
               ),
@@ -295,10 +301,7 @@ class CustomFormField extends StatelessWidget {
           borderSide: BorderSide(color: AppColor.accentColor, width: 3),
         ),
       ),
-      style: const TextStyle(
-        color: AppColor.appbarColor,
-        fontSize: 15,
-      ),
+      style: AppText.textfieldText,
       keyboardType: type,
       textInputAction: TextInputAction.next,
       cursorColor: AppColor.accentColor,

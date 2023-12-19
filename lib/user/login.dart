@@ -5,6 +5,7 @@ import 'package:roomrentalapp/components/custombutton.dart';
 import 'package:roomrentalapp/components/customtextfield.dart';
 import 'package:roomrentalapp/main.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 import 'package:roomrentalapp/user/register.dart';
 
 class LoginPage extends StatefulWidget {
@@ -41,14 +42,10 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         labelText: 'Password',
-        labelStyle: const TextStyle(
-          color: AppColor.appbarColor,
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-        ),
+        labelStyle: AppText.labelText,
         prefixIcon: const Icon(
           Icons.key,
-          color: AppColor.appbarColor,
+          color: AppColor.primaryColor,
           size: 30,
         ),
         suffixIcon: IconButton(
@@ -57,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
               : const Icon(Icons.visibility),
           onPressed: () =>
               setState(() => isPasswordVisible = !isPasswordVisible),
-          color: AppColor.appbarColor,
+          color: AppColor.primaryColor,
         ),
         focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -67,10 +64,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       obscureText: isPasswordVisible,
-      style: const TextStyle(
-        color: AppColor.appbarColor,
-        fontSize: 15,
-      ),
+      style: AppText.textfieldText,
       keyboardType: TextInputType.visiblePassword,
       textInputAction: TextInputAction.done,
       cursorColor: AppColor.accentColor,
@@ -84,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
       gestures: const [GestureType.onTap, GestureType.onPanUpdateDownDirection],
       child: Scaffold(
         // appBar: AppBar(
-        //   backgroundColor: AppColor.appbarColor,
+        //   backgroundColor: AppColor.primaryColor,
         //   automaticallyImplyLeading: false,
         // ),
         body: SingleChildScrollView(
@@ -97,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: ClipPath(
                       clipper: WaveClipperTwo(),
                       child: Container(
-                        color: AppColor.appbarColor,
+                        color: AppColor.primaryColor,
                         height: size.height * 0.26,
                       ),
                     ),
@@ -105,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                   ClipPath(
                     clipper: WaveClipperTwo(),
                     child: Container(
-                      color: AppColor.appbarColor,
+                      color: AppColor.primaryColor,
                       height: size.height * 0.24,
                     ),
                   ),
@@ -116,12 +110,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const Text(
                 "Welcome Back",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
-                  color: AppColor.appbarColor,
-                ),
+                style: AppText.orangeXLText,
               ),
               const SizedBox(
                 height: 20,
@@ -149,11 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextButton(
                         child: const Text(
                           'Forgot Password?',
-                          style: TextStyle(
-                            color: AppColor.appbarColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: AppText.labelText,
                         ),
                         onPressed: () {
                           // Navigator.of(context).push(
@@ -191,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                         const Text(
                           'Don\'t have a account?',
                           style: TextStyle(
-                            color: AppColor.appbarColor,
+                            color: AppColor.primaryColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.1,

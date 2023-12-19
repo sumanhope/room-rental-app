@@ -3,6 +3,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:roomrentalapp/components/logincontainer.dart';
 import 'package:roomrentalapp/components/profilebutton.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -18,16 +19,11 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColor.appbarColor,
+        backgroundColor: AppColor.primaryColor,
         automaticallyImplyLeading: false,
         title: const Text(
           "Profile",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 1,
-          ),
+          style: AppText.appbarText,
         ),
         centerTitle: true,
       ),
@@ -65,23 +61,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         Text(
                           "Suman Shrestha",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 17,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1,
-                          ),
+                          style: AppText.blacknormalText,
                         ),
                         Text(
                           "Kathmandu",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 1,
-                          ),
+                          style: AppText.blackSmallItalicText,
                         ),
                       ],
                     ),

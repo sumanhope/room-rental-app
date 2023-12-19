@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 
 class RoomCard extends StatelessWidget {
   const RoomCard({
@@ -25,7 +26,7 @@ class RoomCard extends StatelessWidget {
         child: Container(
           width: size.width,
           decoration: BoxDecoration(
-            color: AppColor.primaryColor,
+            color: AppColor.secondaryColor,
             borderRadius: BorderRadius.circular(10),
             boxShadow: const [
               BoxShadow(
@@ -64,11 +65,7 @@ class RoomCard extends StatelessWidget {
                     softWrap: true,
                     maxLines: 1,
                     textAlign: TextAlign.left,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                    style: AppText.appbarText,
                   ),
                 ),
               ),
@@ -85,10 +82,7 @@ class RoomCard extends StatelessWidget {
                       softWrap: true,
                       maxLines: 1,
                       textAlign: TextAlign.end,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                      ),
+                      style: AppText.whiteSmallItalicText,
                     ),
                   ),
                 ),

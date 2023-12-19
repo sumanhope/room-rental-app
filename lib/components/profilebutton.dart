@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/themes/texts.dart';
 
 class ProfileButton extends StatelessWidget {
   const ProfileButton({
@@ -29,7 +30,7 @@ class ProfileButton extends StatelessWidget {
         child: TextButton(
           onPressed: func,
           style: TextButton.styleFrom(
-            backgroundColor: AppColor.accentColor,
+            backgroundColor: AppColor.secondaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(7),
             ),
@@ -46,12 +47,7 @@ class ProfileButton extends StatelessWidget {
               ),
               Text(
                 title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 0.8,
-                ),
+                style: AppText.whitenormalbuttonText,
               ),
               const Spacer(),
               const Icon(
