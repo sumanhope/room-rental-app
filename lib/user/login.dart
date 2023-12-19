@@ -5,6 +5,7 @@ import 'package:roomrentalapp/components/custombutton.dart';
 import 'package:roomrentalapp/components/customtextfield.dart';
 import 'package:roomrentalapp/main.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:roomrentalapp/user/register.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,6 +18,12 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController usernameController = TextEditingController();
   String password = '';
   bool isPasswordVisible = false;
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    super.dispose();
+  }
 
   Widget passwordField() {
     return TextField(
@@ -201,13 +208,13 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           onPressed: () {
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(
-                            //     builder: (BuildContext context) {
-                            //       return const SignUpScreen();
-                            //     },
-                            //   ),
-                            // );
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return const RegisterPage();
+                                },
+                              ),
+                            );
                           },
                         ),
                       ],
