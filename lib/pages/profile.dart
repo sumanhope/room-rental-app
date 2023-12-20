@@ -3,6 +3,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:roomrentalapp/components/logincontainer.dart';
 import 'package:roomrentalapp/components/profilebutton.dart';
 import 'package:roomrentalapp/pages/aboutus.dart';
+import 'package:roomrentalapp/pages/addroom.dart';
 import 'package:roomrentalapp/pages/contact.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
@@ -88,7 +89,15 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               ProfileButton(
                 size: size,
-                func: () {},
+                func: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const AddRoomPage();
+                      },
+                    ),
+                  );
+                },
                 leading: FontAwesome.plus,
                 title: "Add Room",
               ),
