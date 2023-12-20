@@ -3,6 +3,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:roomrentalapp/components/logincontainer.dart';
 import 'package:roomrentalapp/components/profilebutton.dart';
 import 'package:roomrentalapp/pages/aboutus.dart';
+import 'package:roomrentalapp/pages/contact.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 
@@ -28,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         centerTitle: true,
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
@@ -100,13 +101,30 @@ class _ProfilePageState extends State<ProfilePage> {
               ProfileButton(
                 size: size,
                 func: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return const AboutUsPage();
-                  }));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const AboutUsPage();
+                      },
+                    ),
+                  );
                 },
                 leading: EvaIcons.activity_outline,
                 title: "About",
+              ),
+              ProfileButton(
+                size: size,
+                func: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const ContactPage();
+                      },
+                    ),
+                  );
+                },
+                leading: Icons.contact_mail_outlined,
+                title: "Contact",
               ),
               LoginContainer(size: size),
             ],
