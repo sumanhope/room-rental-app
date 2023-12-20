@@ -89,35 +89,10 @@ class _ContactPageState extends State<ContactPage> {
                 ),
                 SizedBox(
                   height: 100,
-                  child: TextFormField(
+                  child: CustomTextForm(
                     controller: bodyController,
-                    expands: true,
-                    decoration: const InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFFFFF2D6),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        borderSide:
-                            BorderSide(color: AppColor.accentColor, width: 3),
-                      ),
-                      labelText: "Your Message",
-                      labelStyle: AppText.labelText,
-                      prefixIcon: Icon(
-                        Icons.chat_bubble_outline,
-                        color: AppColor.primaryColor,
-                        size: 30,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        borderSide:
-                            BorderSide(color: AppColor.accentColor, width: 3),
-                      ),
-                    ),
-                    style: AppText.textfieldText,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    textInputAction: TextInputAction.done,
-                    cursorColor: AppColor.accentColor,
+                    label: "Your Message",
+                    leading: Icons.chat_bubble_outline,
                   ),
                 ),
                 const SizedBox(
@@ -133,6 +108,51 @@ class _ContactPageState extends State<ContactPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomTextForm extends StatelessWidget {
+  const CustomTextForm({
+    super.key,
+    required this.controller,
+    required this.label,
+    required this.leading,
+  });
+
+  final TextEditingController controller;
+  final String label;
+  final IconData leading;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      expands: true,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: const Color(0xFFFFF2D6),
+        enabledBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: AppColor.accentColor, width: 3),
+        ),
+        labelText: label,
+        labelStyle: AppText.labelText,
+        prefixIcon: Icon(
+          leading,
+          color: AppColor.primaryColor,
+          size: 30,
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: AppColor.accentColor, width: 3),
+        ),
+      ),
+      style: AppText.textfieldText,
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+      textInputAction: TextInputAction.next,
+      cursorColor: AppColor.accentColor,
     );
   }
 }
