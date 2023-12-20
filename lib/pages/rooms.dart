@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'package:roomrentalapp/components/customtextfield.dart';
 import 'package:roomrentalapp/components/roomcard.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
@@ -11,44 +14,68 @@ class RoomPage extends StatefulWidget {
 }
 
 class _RoomPageState extends State<RoomPage> {
+  final searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.primaryColor,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          "Rooms",
-          style: AppText.appbarText,
+    return KeyboardDismisser(
+      gestures: [GestureType.onTap, GestureType.onPanUpdateAnyDirection],
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColor.primaryColor,
+          automaticallyImplyLeading: false,
+          title: const Text(
+            "Rooms",
+            style: AppText.appbarText,
+          ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            RoomCard(
-              roomfloor: "First Floor",
-              uploadDate: "12/16/2023",
-              press: () {},
-              size: size,
-              imagelink: "assets/images/livingroom.jpg",
-            ),
-            RoomCard(
-              roomfloor: "Second Floor",
-              uploadDate: "12/16/2023",
-              press: () {},
-              size: size,
-              imagelink: "assets/images/livingroom.jpg",
-            ),
-            RoomCard(
-              roomfloor: "Third Floor",
-              uploadDate: "12/16/2023",
-              press: () {},
-              size: size,
-              imagelink: "assets/images/livingroom.jpg",
-            ),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 10,
+                  top: 10,
+                  bottom: 1,
+                ),
+                child: CustomTextField(
+                  controller: searchController,
+                  title: "Search",
+                  leading: EvaIcons.search,
+                ),
+              ),
+              RoomCard(
+                roomfloor: "First Floor",
+                uploadDate: "12/16/2023",
+                press: () {},
+                size: size,
+                imagelink: "assets/images/livingroom.jpg",
+              ),
+              RoomCard(
+                roomfloor: "Second Floor",
+                uploadDate: "12/16/2023",
+                press: () {},
+                size: size,
+                imagelink: "assets/images/livingroom.jpg",
+              ),
+              RoomCard(
+                roomfloor: "Third Floor",
+                uploadDate: "12/16/2023",
+                press: () {},
+                size: size,
+                imagelink: "assets/images/livingroom.jpg",
+              ),
+            ],
+          ),
         ),
       ),
     );
