@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:roomrentalapp/pages/aboutus.dart';
+import 'package:roomrentalapp/pages/rooms.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 
@@ -104,7 +106,15 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const RoomPage();
+                                },
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             shadowColor: AppColor.extraColor,
                             backgroundColor: AppColor.secondaryColor,
@@ -124,7 +134,15 @@ class _HomePageState extends State<HomePage> {
                         width: size.width * 0.41,
                         height: size.height * 0.07,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const AboutUsPage();
+                                },
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black,
                             shape: const BeveledRectangleBorder(),
