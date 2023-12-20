@@ -8,4 +8,5 @@ class AppColor {
   static const Color accentColor = Color(0xFF8D0000);
   static const Color accentTextColor = Color(0xF9E0E0E0);
   static const Color extraColor = Color(0xFFF8D791);
+  static const Color fillColor = Color(0xFFFFF2D6);
 }
