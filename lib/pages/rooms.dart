@@ -52,6 +52,8 @@ class _RoomPageState extends State<RoomPage> {
                   controller: searchController,
                   title: "Search",
                   leading: EvaIcons.search,
+                  action: TextInputAction.done,
+                  type: TextInputType.text,
                 ),
               ),
               RoomCard(

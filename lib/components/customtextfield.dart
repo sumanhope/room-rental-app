@@ -8,11 +8,15 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     required this.leading,
     required this.title,
+    required this.type,
+    required this.action,
   });
 
   final TextEditingController controller;
   final IconData leading;
   final String title;
+  final TextInputType type;
+  final TextInputAction action;
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +51,8 @@ class CustomTextField extends StatelessWidget {
         ),
       ),
       style: AppText.textfieldText,
-      keyboardType: TextInputType.text,
-      textInputAction: TextInputAction.next,
+      keyboardType: type,
+      textInputAction: action,
       cursorColor: AppColor.accentColor,
     );
   }

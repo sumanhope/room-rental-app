@@ -125,6 +125,8 @@ class _LoginPageState extends State<LoginPage> {
                         controller: usernameController,
                         leading: Icons.person,
                         title: "Username",
+                        action: TextInputAction.next,
+                        type: TextInputType.text,
                       ),
                     ),
                     const SizedBox(
