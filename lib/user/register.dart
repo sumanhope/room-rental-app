@@ -247,8 +247,23 @@ class _RegisterPageState extends State<RegisterPage> {
           "Confirm",
           style: AppText.blacksmallText,
         ),
-        content: Text(
-          'Full name : ${fullnameController.text}\nPlace : ${placeController.text}\nEmail : ${emailController.text}\nUsername : ${usernameController.text}\nPassword : ${passwordController.text}\nConfirmPassword : ${confrimpasswordController.text}',
+        content: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFFFFF2D6),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              'Full name : ${fullnameController.text} '
+              '\nPlace : ${placeController.text}'
+              '\nEmail : ${emailController.text}'
+              '\nUsername : ${usernameController.text}'
+              '\nPassword : ${passwordController.text}'
+              '\nConfirmPassword : ${confrimpasswordController.text}',
+              style: AppText.blacksmallText,
+            ),
+          ),
         ),
       ),
     ];
