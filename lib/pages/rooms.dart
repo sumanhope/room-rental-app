@@ -3,6 +3,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:roomrentalapp/components/customtextfield.dart';
 import 'package:roomrentalapp/components/roomcard.dart';
+import 'package:roomrentalapp/pages/roomdetails.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 
@@ -26,7 +27,7 @@ class _RoomPageState extends State<RoomPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return KeyboardDismisser(
-      gestures: [GestureType.onTap, GestureType.onPanUpdateAnyDirection],
+      gestures: const [GestureType.onTap, GestureType.onPanUpdateAnyDirection],
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColor.primaryColor,
@@ -56,7 +57,15 @@ class _RoomPageState extends State<RoomPage> {
               RoomCard(
                 roomfloor: "First Floor",
                 uploadDate: "12/16/2023",
-                press: () {},
+                press: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const RoomDetailsPage();
+                      },
+                    ),
+                  );
+                },
                 size: size,
                 imagelink: "assets/images/livingroom.jpg",
               ),
