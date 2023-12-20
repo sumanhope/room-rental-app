@@ -30,6 +30,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
           "About Us",
           style: AppText.appbarText,
         ),
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(
             Icons.keyboard_arrow_left,
