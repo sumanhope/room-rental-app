@@ -3,6 +3,7 @@ import 'package:roomrentalapp/components/accountfield.dart';
 
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
+import 'package:roomrentalapp/user/editdetails.dart';
 
 class AccountDetailsPage extends StatefulWidget {
   const AccountDetailsPage({super.key});
@@ -19,7 +20,7 @@ class _AccountDetailsPageState extends State<AccountDetailsPage> {
       appBar: AppBar(
         backgroundColor: AppColor.primaryColor,
         title: const Text(
-          "My Account",
+          "Account Details",
           style: AppText.appbarText,
         ),
         centerTitle: true,
@@ -128,7 +129,15 @@ class _AccountDetailsPageState extends State<AccountDetailsPage> {
               SizedBox(
                 height: size.height * 0.07,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const EditDetailsPage();
+                        },
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
