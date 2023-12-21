@@ -23,6 +23,13 @@ class AppText {
     letterSpacing: 1,
   );
 
+  static const greysmallText = TextStyle(
+    color: Color.fromARGB(255, 93, 93, 93),
+    fontSize: 15,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 1,
+  );
+
   static const blackbigText = TextStyle(
     fontSize: 28,
     fontWeight: FontWeight.bold,
