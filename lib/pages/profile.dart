@@ -7,6 +7,7 @@ import 'package:roomrentalapp/pages/addroom.dart';
 import 'package:roomrentalapp/pages/contact.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
+import 'package:roomrentalapp/user/accountdetails.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -53,6 +54,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           color: Colors.black,
                           width: 2,
                         ),
+                        image: const DecorationImage(
+                          image: AssetImage("assets/images/defaultprofile.jpg"),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -83,7 +88,15 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               ProfileButton(
                 size: size,
-                func: () {},
+                func: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const AccountDetailsPage();
+                      },
+                    ),
+                  );
+                },
                 leading: EvaIcons.person,
                 title: "Account Details",
               ),
