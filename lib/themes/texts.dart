@@ -45,13 +45,13 @@ class AppText {
   );
 
   static const whiteSmallItalicText = TextStyle(
-    fontSize: 15,
+    fontSize: 14,
     color: Colors.white,
     fontStyle: FontStyle.italic,
   );
   static const blackSmallItalicText = TextStyle(
     color: Colors.black,
-    fontSize: 15,
+    fontSize: 14,
     fontStyle: FontStyle.italic,
     fontWeight: FontWeight.w700,
     letterSpacing: 1,
