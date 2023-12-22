@@ -6,6 +6,7 @@ import 'package:roomrentalapp/components/customtextfield.dart';
 import 'package:roomrentalapp/main.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
+import 'package:roomrentalapp/user/forgotpassword.dart';
 import 'package:roomrentalapp/user/register.dart';
 
 class LoginPage extends StatefulWidget {
@@ -143,13 +144,13 @@ class _LoginPageState extends State<LoginPage> {
                           style: AppText.labelText,
                         ),
                         onPressed: () {
-                          // Navigator.of(context).push(
-                          //   MaterialPageRoute(
-                          //     builder: (BuildContext context) {
-                          //       return const ResetPasswordScreen();
-                          //     },
-                          //   ),
-                          // );
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return const ForgotPasswordPage();
+                              },
+                            ),
+                          );
                         },
                       ),
                     ),
