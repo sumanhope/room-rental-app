@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roomrentalapp/components/customappbar.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 
@@ -30,24 +31,7 @@ class _RoomDetailsPageState extends State<RoomDetailsPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.primaryColor,
-        title: const Text(
-          "Room Details",
-          style: AppText.appbarText,
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_arrow_left,
-            size: 30,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
+      appBar: const CustomAppBar(title: "Room Details", arrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 10, right: 10, top: 8),

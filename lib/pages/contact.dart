@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'package:roomrentalapp/components/customappbar.dart';
 import 'package:roomrentalapp/components/custombutton.dart';
 import 'package:roomrentalapp/components/customtextfield.dart';
 import 'package:roomrentalapp/themes/colors.dart';
@@ -23,24 +24,7 @@ class _ContactPageState extends State<ContactPage> {
     return KeyboardDismisser(
       gestures: const [GestureType.onTap, GestureType.onPanUpdateAnyDirection],
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Contact Us",
-            style: AppText.appbarText,
-          ),
-          backgroundColor: AppColor.primaryColor,
-          centerTitle: true,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.keyboard_arrow_left,
-              size: 30,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ),
+        appBar: const CustomAppBar(title: "Contact Us", arrow: true),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10.0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roomrentalapp/components/customappbar.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -24,23 +25,9 @@ class _AboutUsPageState extends State<AboutUsPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.primaryColor,
-        title: const Text(
-          "About Us",
-          style: AppText.appbarText,
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_arrow_left,
-            size: 30,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+      appBar: const CustomAppBar(
+        title: "About Us",
+        arrow: true,
       ),
       body: Center(
         child: Padding(

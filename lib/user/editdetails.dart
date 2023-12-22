@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'package:roomrentalapp/components/customappbar.dart';
 import 'package:roomrentalapp/components/custombutton.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
@@ -30,24 +31,7 @@ class _EditDetailsPageState extends State<EditDetailsPage> {
     return KeyboardDismisser(
       gestures: const [GestureType.onTap, GestureType.onPanUpdateAnyDirection],
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColor.primaryColor,
-          title: const Text(
-            "Edit Details",
-            style: AppText.appbarText,
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.keyboard_arrow_left,
-              size: 30,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ),
+        appBar: const CustomAppBar(title: "Edit Details", arrow: true),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10.0),

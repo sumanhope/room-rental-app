@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roomrentalapp/components/customappbar.dart';
 import 'package:roomrentalapp/components/profilebutton.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
@@ -15,24 +16,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.primaryColor,
-        title: const Text(
-          "Account and Password",
-          style: AppText.appbarText,
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_arrow_left,
-            size: 30,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
+      appBar: const CustomAppBar(title: "Account and Password", arrow: true),
       body: Center(
         child: Column(
           children: [

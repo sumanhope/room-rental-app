@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/components/accountfield.dart';
+import 'package:roomrentalapp/components/customappbar.dart';
 
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
@@ -17,24 +18,7 @@ class _AccountDetailsPageState extends State<AccountDetailsPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.primaryColor,
-        title: const Text(
-          "Account Details",
-          style: AppText.appbarText,
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(
-            Icons.keyboard_arrow_left,
-            size: 30,
-            color: Colors.white,
-          ),
-        ),
-      ),
+      appBar: const CustomAppBar(title: "Account Details", arrow: true),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Center(
