@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:roomrentalapp/components/customappbar.dart';
 import 'package:roomrentalapp/components/custombutton.dart';
+import 'package:roomrentalapp/components/customoutlinebutton.dart';
+import 'package:roomrentalapp/components/editdetailsfield.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 
@@ -63,6 +65,7 @@ class _EditDetailsPageState extends State<EditDetailsPage> {
                   EditDetailsField(
                     label: "Full Name",
                     controller: fullnameController,
+                    action: TextInputAction.next,
                   ),
                   const SizedBox(
                     height: 10,
@@ -70,6 +73,7 @@ class _EditDetailsPageState extends State<EditDetailsPage> {
                   EditDetailsField(
                     label: "Username",
                     controller: usernameController,
+                    action: TextInputAction.next,
                   ),
                   const SizedBox(
                     height: 10,
@@ -77,24 +81,11 @@ class _EditDetailsPageState extends State<EditDetailsPage> {
                   EditDetailsField(
                     label: "Place",
                     controller: placeController,
+                    action: TextInputAction.done,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //   children: [
-
-                  //     SizedBox(
-                  //       width: size.width * 0.35,
-                  //       child: CustomButton(
-                  //         size: size,
-                  //         func: () {},
-                  //         title: "Save",
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                   SizedBox(
                     width: size.width,
                     height: size.height * 0.07,
@@ -110,23 +101,10 @@ class _EditDetailsPageState extends State<EditDetailsPage> {
                   SizedBox(
                     width: size.width,
                     height: size.height * 0.07,
-                    child: ElevatedButton(
-                      onPressed: () {
+                    child: CustomOutlineButton(
+                      func: () {
                         Navigator.of(context).pop();
                       },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          side: const BorderSide(
-                            color: AppColor.accentColor,
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                      child: const Text(
-                        "Cancel",
-                        style: AppText.blacknormalText,
-                      ),
                     ),
                   ),
                 ],
@@ -135,60 +113,6 @@ class _EditDetailsPageState extends State<EditDetailsPage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class EditDetailsField extends StatelessWidget {
-  const EditDetailsField({
-    super.key,
-    required this.label,
-    required this.controller,
-  });
-
-  final String label;
-  final TextEditingController controller;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            label,
-            style: AppText.labelText,
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        TextField(
-          controller: controller,
-          style: AppText.textfieldText,
-          decoration: const InputDecoration(
-            filled: true,
-            fillColor: Color(0xFFFFF2D6),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8),
-              ),
-              borderSide: BorderSide(
-                color: AppColor.accentColor,
-                width: 2,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8),
-              ),
-              borderSide: BorderSide(
-                color: AppColor.accentColor,
-                width: 2,
-              ),
-            ),
-          ),
-        )
-      ],
     );
   }
 }
