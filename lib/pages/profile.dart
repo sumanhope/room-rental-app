@@ -90,6 +90,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(horizontal: 2),
                           side: const BorderSide(
+                            color: AppColor.accentColor,
                             width: 2,
                           ),
                           shape: RoundedRectangleBorder(
@@ -113,7 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ],
               ),
               const Divider(
-                color: Colors.black,
+                color: AppColor.accentColor,
                 thickness: 1.7,
                 indent: 10,
                 endIndent: 10,
