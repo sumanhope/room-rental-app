@@ -179,7 +179,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   );
                 },
                 leading: Icons.contact_mail_outlined,
-                title: "Contact",
+                title: "Contact Us",
               ),
               ProfileButton(
                 size: size,
@@ -193,7 +193,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   );
                 },
                 leading: EvaIcons.activity_outline,
-                title: "About",
+                title: "About Us",
               ),
               LoginContainer(size: size),
             ],
