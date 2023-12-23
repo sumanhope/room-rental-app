@@ -3,6 +3,7 @@ import 'package:roomrentalapp/components/customappbar.dart';
 import 'package:roomrentalapp/components/profilebutton.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
+import 'package:roomrentalapp/user/changepassword.dart';
 
 class AccountSettingPage extends StatefulWidget {
   const AccountSettingPage({super.key});
@@ -45,7 +46,15 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
             ),
             ProfileButton(
               size: size,
-              func: () {},
+              func: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const ChangePasswordPage();
+                    },
+                  ),
+                );
+              },
               leading: Icons.key_outlined,
               title: "Change Password",
             ),
