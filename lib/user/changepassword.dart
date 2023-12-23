@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:roomrentalapp/components/customappbar.dart';
 import 'package:roomrentalapp/components/custombutton.dart';
-import 'package:roomrentalapp/components/customoutlinebutton.dart';
-import 'package:roomrentalapp/components/customtextfield.dart';
 import 'package:roomrentalapp/components/editdetailsfield.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 import 'package:roomrentalapp/user/forgotpassword.dart';
