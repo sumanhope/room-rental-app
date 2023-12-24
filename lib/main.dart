@@ -7,8 +7,14 @@ import 'package:roomrentalapp/pages/home.dart';
 import 'package:roomrentalapp/pages/profile.dart';
 import 'package:roomrentalapp/pages/rooms.dart';
 import 'package:roomrentalapp/themes/colors.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
   GoogleFonts.config.allowRuntimeFetching = false;
 }
