@@ -3,11 +3,11 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:roomrentalapp/components/custombutton.dart';
 import 'package:roomrentalapp/components/customtextfield.dart';
-import 'package:roomrentalapp/main.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 import 'package:roomrentalapp/user/forgotpassword.dart';
 import 'package:roomrentalapp/user/register.dart';
+import 'package:roomrentalapp/verification/emailverification.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -163,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (BuildContext context) {
-                              return const LandingPage();
+                              return const EmailVerificationPage();
                             },
                           ),
                         );
