@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 
-class FavoritePage extends StatefulWidget {
-  const FavoritePage({super.key});
+class BookmarkPage extends StatefulWidget {
+  const BookmarkPage({super.key});
 
   @override
-  State<FavoritePage> createState() => _FavoritePageState();
+  State<BookmarkPage> createState() => _BookmarkPageState();
 }
 
-class _FavoritePageState extends State<FavoritePage> {
+class _BookmarkPageState extends State<BookmarkPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _FavoritePageState extends State<FavoritePage> {
         backgroundColor: AppColor.primaryColor,
         automaticallyImplyLeading: false,
         title: const Text(
-          "Favorite",
+          "Bookmark",
           style: AppText.appbarText,
         ),
         centerTitle: true,
@@ -28,7 +28,7 @@ class _FavoritePageState extends State<FavoritePage> {
           children: [
             Center(
               child: Text(
-                "Favorite",
+                "Bookmark",
                 style: AppText.blacknormalText,
               ),
             ),

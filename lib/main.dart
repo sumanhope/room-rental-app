@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:roomrentalapp/pages/favorite.dart';
+import 'package:roomrentalapp/pages/bookmark.dart';
 import 'package:roomrentalapp/pages/home.dart';
 import 'package:roomrentalapp/pages/profile.dart';
 import 'package:roomrentalapp/pages/rooms.dart';
@@ -41,7 +41,7 @@ class _LandingPageState extends State<LandingPage> {
   final List<Widget> pages = [
     const HomePage(),
     const RoomPage(),
-    const FavoritePage(),
+    const BookmarkPage(),
     const ProfilePage(),
   ];
 
@@ -73,21 +73,25 @@ class _LandingPageState extends State<LandingPage> {
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
-              tabs: const [
-                GButton(
+              tabs: [
+                const GButton(
                   icon: LineAwesome.person_booth_solid,
                   text: "Welcome",
                 ),
-                GButton(
+                const GButton(
                   icon: EvaIcons.search_outline,
                   text: "Rooms",
                 ),
                 GButton(
-                  icon: EvaIcons.heart,
-                  text: "Favorite",
+                  icon: currentStep == 2
+                      ? EvaIcons.bookmark
+                      : EvaIcons.bookmark_outline,
+                  text: "Bookmark",
                 ),
                 GButton(
-                  icon: EvaIcons.person,
+                  icon: currentStep == 3
+                      ? EvaIcons.person
+                      : EvaIcons.person_outline,
                   text: "Profile",
                 ),
               ],
