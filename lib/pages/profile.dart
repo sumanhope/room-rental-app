@@ -3,8 +3,8 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:roomrentalapp/components/logincontainer.dart';
 import 'package:roomrentalapp/components/profilebutton.dart';
 import 'package:roomrentalapp/pages/aboutus.dart';
-import 'package:roomrentalapp/pages/addroom.dart';
 import 'package:roomrentalapp/pages/contact.dart';
+import 'package:roomrentalapp/pages/viewpost.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 import 'package:roomrentalapp/user/accountdetails.dart';
@@ -139,13 +139,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return const AddRoomPage();
+                        return const ViewPostPage();
                       },
                     ),
                   );
                 },
-                leading: FontAwesome.plus,
-                title: "Add Room",
+                leading: Icons.post_add,
+                title: "View Posts",
               ),
               ProfileButton(
                 size: size,
