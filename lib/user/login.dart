@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
@@ -7,7 +8,7 @@ import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 import 'package:roomrentalapp/user/forgotpassword.dart';
 import 'package:roomrentalapp/user/register.dart';
-import 'package:roomrentalapp/verification/emailverification.dart';
+//import 'package:roomrentalapp/verification/emailverification.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -25,6 +26,20 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     usernameController.dispose();
     super.dispose();
+  }
+
+  Future login(String email, String password) async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then(
+        (value) {
+          debugPrint("Login");
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   Widget passwordField() {
@@ -160,13 +175,14 @@ class _LoginPageState extends State<LoginPage> {
                     CustomButton(
                       size: size,
                       func: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) {
-                              return const EmailVerificationPage();
-                            },
-                          ),
-                        );
+                        login(usernameController.text, password);
+                        // Navigator.of(context).pushReplacement(
+                        //   MaterialPageRoute(
+                        //     builder: (BuildContext context) {
+                        //       return const EmailVerificationPage();
+                        //     },
+                        //   ),
+                        // );
                       },
                       title: "LOG IN",
                     ),
