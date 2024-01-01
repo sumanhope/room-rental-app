@@ -1,11 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:roomrentalapp/components/custombutton.dart';
-
 import 'package:roomrentalapp/components/customtextfield.dart';
+import 'package:roomrentalapp/components/errordialog.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
+import 'package:roomrentalapp/verification/resetverification.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -16,6 +18,46 @@ class ForgotPasswordPage extends StatefulWidget {
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final emailController = TextEditingController();
+
+  @override
+  void initState() {
+    emailController.addListener(
+      () {
+        setState(() {});
+      },
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
+  Future passwordReset() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(
+        email: emailController.text.trim(),
+      )
+          .then(
+        (value) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return const ResetVerificationPage();
+              },
+            ),
+          );
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      debugPrint(e.toString());
+      errorDialog(e.toString(), context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -95,7 +137,17 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     action: TextInputAction.done,
                   ),
                 ),
-                CustomButton(size: size, func: () {}, title: "Confirm"),
+                CustomButton(
+                  size: size,
+                  func: () {
+                    if (emailController.text.trim().isEmpty) {
+                      errorDialog("Please fill the email address", context);
+                    } else {
+                      passwordReset();
+                    }
+                  },
+                  title: "Confirm",
+                ),
                 const SizedBox(
                   height: 5,
                 ),
@@ -111,7 +163,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       style: AppText.blacknormalText,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
