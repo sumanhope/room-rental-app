@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
+import 'package:roomrentalapp/verification/emailverification.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -20,6 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordController = TextEditingController();
   final confrimpasswordController = TextEditingController();
   DateTime today = DateTime.now();
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -30,6 +34,87 @@ class _RegisterPageState extends State<RegisterPage> {
     passwordController.dispose();
     confrimpasswordController.dispose();
     super.dispose();
+  }
+
+  Future errorDialog(String error) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+          backgroundColor: const Color.fromARGB(148, 255, 2, 2),
+          elevation: 5,
+          title: Center(
+            child: Text(
+              error,
+              style: const TextStyle(
+                letterSpacing: 1,
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future registerAcc() async {
+    try {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      );
+      await auth.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      final User user = auth.currentUser!;
+      final uid = user.uid;
+      String date = "${today.month}/${today.day}/${today.year}";
+      FirebaseFirestore.instance.collection('users').doc(uid).set({
+        'userid': uid,
+        'username': usernameController.text.trim(),
+        'email': emailController.text.trim(),
+        'fullname': fullnameController.text.trim(),
+        'place': placeController.text.trim(),
+        'accountcreatedon': date,
+        'profilelink': '',
+      }).then(
+        (value) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return const EmailVerificationPage();
+              },
+            ),
+          );
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      // ignore: use_build_context_synchronously
+      Navigator.pop(context);
+      errorDialog(e.toString());
+    }
+  }
+
+  bool passwordConfirmed(String password, String confirmpassword) {
+    if (password == confirmpassword) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
