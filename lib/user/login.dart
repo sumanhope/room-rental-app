@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'package:roomrentalapp/backend/backend.dart';
 import 'package:roomrentalapp/components/custombutton.dart';
 import 'package:roomrentalapp/components/customtextfield.dart';
 import 'package:roomrentalapp/themes/colors.dart';
@@ -28,18 +28,33 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  Future login(String email, String password) async {
-    try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then(
-        (value) {
-          debugPrint("Login");
-        },
-      );
-    } on FirebaseAuthException catch (e) {
-      debugPrint(e.toString());
-    }
+  Future errorDialog(String error) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+          backgroundColor: const Color.fromARGB(148, 255, 2, 2),
+          elevation: 5,
+          title: Center(
+            child: Text(
+              error,
+              style: const TextStyle(
+                letterSpacing: 1,
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      },
+    );
   }
 
   Widget passwordField() {
@@ -174,8 +189,28 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     CustomButton(
                       size: size,
-                      func: () {
-                        login(usernameController.text, password);
+                      func: () async {
+                        if (usernameController.text.trim().isNotEmpty &&
+                            password.isNotEmpty) {
+                          showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (context) {
+                              return const Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColor.accentColor,
+                                ),
+                              );
+                            },
+                          );
+                          String result =
+                              await login(usernameController.text, password);
+                          if (result == "true") {
+                          } else {
+                            errorDialog(result);
+                          }
+                        }
+
                         // Navigator.of(context).pushReplacement(
                         //   MaterialPageRoute(
                         //     builder: (BuildContext context) {
