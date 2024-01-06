@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:roomrentalapp/components/accountfield.dart';
 import 'package:roomrentalapp/components/customappbar.dart';
@@ -14,6 +16,38 @@ class AccountDetailsPage extends StatefulWidget {
 }
 
 class _AccountDetailsPageState extends State<AccountDetailsPage> {
+  final firestore = FirebaseFirestore.instance;
+  final User user = FirebaseAuth.instance.currentUser!;
+  String uid = "";
+  String fullname = "Loading";
+  String email = "Loading";
+  String username = "Loading";
+  String place = "Loading";
+  String accountcreatedon = "Loading";
+  String profilelink = "";
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  void getData() async {
+    uid = user.uid;
+    final DocumentSnapshot userDoc =
+        await firestore.collection('users').doc(uid).get();
+    setState(
+      () {
+        fullname = userDoc.get('fullname');
+        email = userDoc.get('email');
+        username = userDoc.get('username');
+        place = userDoc.get('place');
+        profilelink = userDoc.get('profilelink');
+        accountcreatedon = userDoc.get('accountcreatedon');
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -90,22 +124,27 @@ class _AccountDetailsPageState extends State<AccountDetailsPage> {
               AccountField(
                 size: size,
                 title: "Full Name",
-                value: "Suman Shrestha",
+                value: fullname,
               ),
               AccountField(
                 size: size,
                 title: "Email",
-                value: "sumansthahope@gmail.com",
+                value: email,
               ),
               AccountField(
                 size: size,
                 title: "Username",
-                value: "pauroti",
+                value: username,
               ),
               AccountField(
                 size: size,
                 title: "Place",
-                value: "Kathmandu",
+                value: place,
+              ),
+              AccountField(
+                size: size,
+                title: "Account created on",
+                value: accountcreatedon,
               ),
               const SizedBox(
                 height: 20,
