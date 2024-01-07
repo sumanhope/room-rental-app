@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'package:roomrentalapp/pages/terms.dart';
 import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 import 'package:roomrentalapp/verification/emailverification.dart';
@@ -24,6 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final confrimpasswordController = TextEditingController();
   DateTime today = DateTime.now();
   final FirebaseAuth auth = FirebaseAuth.instance;
+  bool ischecked = false;
 
   @override
   void dispose() {
@@ -332,23 +334,61 @@ class _RegisterPageState extends State<RegisterPage> {
           "Confirm",
           style: AppText.blacksmallText,
         ),
-        content: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFFFFF2D6),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              'Full name : ${fullnameController.text} '
-              '\nPlace : ${placeController.text}'
-              '\nEmail : ${emailController.text}'
-              '\nUsername : ${usernameController.text}'
-              '\nPassword : ${passwordController.text}'
-              '\nConfirmPassword : ${confrimpasswordController.text}',
-              style: AppText.blacksmallText,
+        content: Column(
+          children: [
+            Container(
+              width: 500,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFF2D6),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  'Full name : ${fullnameController.text} '
+                  '\nPlace : ${placeController.text}'
+                  '\nEmail : ${emailController.text}'
+                  '\nUsername : ${usernameController.text}'
+                  '\nPassword : ${passwordController.text}'
+                  '\nConfirmPassword : ${confrimpasswordController.text}',
+                  style: AppText.blacksmallText,
+                ),
+              ),
             ),
-          ),
+            Row(
+              children: [
+                Checkbox(
+                  value: ischecked,
+                  onChanged: (value) {
+                    setState(() {
+                      ischecked = value!;
+                    });
+                  },
+                  activeColor: AppColor.accentColor,
+                  side: const BorderSide(
+                    color: AppColor.accentColor,
+                    width: 2,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const TermsPage();
+                        },
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Terms and Conditions",
+                    style: AppText.blacksmallText,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     ];
