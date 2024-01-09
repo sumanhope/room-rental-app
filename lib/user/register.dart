@@ -167,16 +167,37 @@ class _RegisterPageState extends State<RegisterPage> {
                 onStepContinue: () {
                   final isLastStep = currentStep == getSteps().length - 1;
                   if (isLastStep) {
-                    debugPrint("Complete");
+                    if (ischecked) {
+                      registerAcc();
+                    } else {
+                      errorDialog("Please check Terms and Conditions box.");
+                    }
                   } else {
                     if (currentStep == 0) {
-                      setState(() {
-                        currentStep += 1;
-                      });
+                      if (emailController.text.trim().isNotEmpty &&
+                          fullnameController.text.trim().isNotEmpty &&
+                          placeController.text.trim().isNotEmpty) {
+                        setState(() {
+                          currentStep += 1;
+                        });
+                      } else {
+                        errorDialog("Please fill all the fields.");
+                      }
                     } else if (currentStep == 1) {
-                      setState(() {
-                        currentStep += 1;
-                      });
+                      if (usernameController.text.trim().isNotEmpty &&
+                          passwordController.text.trim().isNotEmpty &&
+                          confrimpasswordController.text.trim().isNotEmpty) {
+                        if (passwordConfirmed(passwordController.text,
+                            confrimpasswordController.text)) {
+                          setState(() {
+                            currentStep += 1;
+                          });
+                        } else {
+                          errorDialog("Password doesn't match");
+                        }
+                      } else {
+                        errorDialog("Please fill all the fields.");
+                      }
                     }
                   }
                 },
@@ -383,7 +404,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                   child: const Text(
                     "Terms and Conditions",
-                    style: AppText.blacksmallText,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1,
+                      decoration: TextDecoration.underline,
+                      decorationColor: AppColor.accentColor,
+                      decorationThickness: 2,
+                    ),
                   ),
                 ),
               ],
