@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
@@ -17,12 +20,50 @@ class EmailVerificationPage extends StatefulWidget {
 class _EmailVerificationPageState extends State<EmailVerificationPage> {
   bool isEmailVerified = false;
   bool canResendEmail = false;
-  //Timer? timer;
+  Timer? timer;
 
-  void emailsender() {
+  @override
+  void initState() {
+    super.initState();
+    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+    if (!isEmailVerified) {
+      sendVerificationEmail();
+      timer = Timer.periodic(
+        const Duration(seconds: 3),
+        (_) => checkEmailVerified(),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
+  Future sendVerificationEmail() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser!;
+      await user.sendEmailVerification();
+      setState(() {
+        canResendEmail = false;
+      });
+      await Future.delayed(const Duration(seconds: 5));
+      setState(() {
+        canResendEmail = true;
+      });
+    } on FirebaseException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future checkEmailVerified() async {
+    await FirebaseAuth.instance.currentUser!.reload();
     setState(() {
-      isEmailVerified = true;
+      isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
     });
+
+    if (isEmailVerified) timer?.cancel();
   }
 
   @override
@@ -96,7 +137,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                           color: AppColor.accentColor,
                         ),
                       ),
-                      onPressed: emailsender,
+                      onPressed: canResendEmail ? sendVerificationEmail : null,
                       child: const Text(
                         "Resend",
                         style: AppText.whitenormalbuttonText,
@@ -109,7 +150,15 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                   SizedBox(
                     height: 50,
                     width: 200,
-                    child: CustomOutlineButton(func: () {}),
+                    child: CustomOutlineButton(
+                      func: () {
+                        FirebaseAuth.instance.signOut().then(
+                          (value) {
+                            Navigator.pop(context);
+                          },
+                        );
+                      },
+                    ),
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
