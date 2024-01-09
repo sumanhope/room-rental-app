@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:roomrentalapp/components/logincontainer.dart';
 import 'package:roomrentalapp/components/profilebutton.dart';
+import 'package:roomrentalapp/main.dart';
 import 'package:roomrentalapp/pages/aboutus.dart';
 import 'package:roomrentalapp/pages/contact.dart';
 import 'package:roomrentalapp/pages/viewpost.dart';
@@ -87,8 +88,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       username,
                       style: AppText.blacknormalText,
                     ),
-                    const Text(
-                      "Kathmandu",
+                    Text(
+                      place,
                       style: AppText.blackSmallItalicText,
                     ),
                   ],
@@ -112,9 +113,16 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     onPressed: () {
-                      FirebaseAuth.instance.signOut().then((value) {
-                        setState(() {});
-                      });
+                      FirebaseAuth.instance.signOut().then(
+                        (value) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LandingPage(),
+                            ),
+                          );
+                        },
+                      );
                     },
                     child: const Text(
                       "BYE",
@@ -149,7 +157,7 @@ class _ProfilePageState extends State<ProfilePage> {
               );
             },
             leading: EvaIcons.person,
-            title: "Suman Shrestha",
+            title: fullname,
           ),
           ProfileButton(
             size: size,

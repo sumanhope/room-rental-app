@@ -8,6 +8,7 @@ import 'package:roomrentalapp/themes/colors.dart';
 import 'package:roomrentalapp/themes/texts.dart';
 import 'package:roomrentalapp/user/forgotpassword.dart';
 import 'package:roomrentalapp/user/register.dart';
+import 'package:roomrentalapp/verification/emailverification.dart';
 //import 'package:roomrentalapp/verification/emailverification.dart';
 
 class LoginPage extends StatefulWidget {
@@ -206,18 +207,17 @@ class _LoginPageState extends State<LoginPage> {
                           String result =
                               await login(usernameController.text, password);
                           if (result == "true") {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return const EmailVerificationPage();
+                                },
+                              ),
+                            );
                           } else {
                             errorDialog(result);
                           }
                         }
-
-                        // Navigator.of(context).pushReplacement(
-                        //   MaterialPageRoute(
-                        //     builder: (BuildContext context) {
-                        //       return const EmailVerificationPage();
-                        //     },
-                        //   ),
-                        // );
                       },
                       title: "LOG IN",
                     ),
